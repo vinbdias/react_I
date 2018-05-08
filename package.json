@@ -1,0 +1,24 @@
+{
+  "name": "react_i",
+  "version": "1.0.0",
+  "description": "Pure CSS Layout Examples ========================",
+  "main": "index.js",
+  "dependencies": {
+    "fetch-polyfill": "^0.8.2",
+    "create-react-app": "^1.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinbdias/react_I.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinbdias/react_I/issues"
+  },
+  "homepage": "https://github.com/vinbdias/react_I#readme"
+}
