@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"obter",
+				"obterAutores\t(AutorService.js)"
+			],
+			[
 				"ne",
 				"negociacaoController"
 			],
@@ -38,10 +42,6 @@
 			[
 				"nego",
 				"negociacoes"
-			],
-			[
-				"obter",
-				"obterNegociacoes"
 			],
 			[
 				"neg",
@@ -203,17 +203,64 @@
 			"file": "cdc-admin/src/App.js",
 			"settings":
 			{
-				"buffer_size": 4012,
+				"buffer_size": 4177,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"file": "cdc-admin/src/services/AutorService.js",
+			"settings":
+			{
+				"buffer_size": 577,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "cdc-admin/src/services/LivroService.js",
+			"settings":
+			{
+				"buffer_size": 572,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "cdc-admin/public/index.html",
+			"settings":
+			{
+				"buffer_size": 507,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "export class HttpService {\n\n    _handleErrors(res) {\n\n        if(!res.ok) throw new Error(res.statusText);\n\n        return res;\n    }\n    \n    get(url) {\n        \n        return fetch(url)\n            .then(res => this._handleErrors(res))\n            .then(res => res.json());\n    }\n\n    post(url, dado) {\n\n        return fetch(url, {\n\n            headers: { 'Content-type': 'application/json' },\n            method: 'post',\n            body: JSON.stringify(dado)\n        })\n        .then(res => this._handleErrors(res));\n    }\n}",
 			"file": "cdc-admin/src/HttpService.js",
+			"file_size": 529,
+			"file_write_time": 131697657055427688,
 			"settings":
 			{
 				"buffer_size": 529,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/alura/js_avancado_III/aluraframe/client/js/app-es6/services/NegociacaoService.js",
+			"settings":
+			{
+				"buffer_size": 4432,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/alura/js_avancado_III/aluraframe/client/js/app-es6/controllers/NegociacaoController.js",
+			"settings":
+			{
+				"buffer_size": 3632,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -307,12 +354,11 @@
 		"/C/alura/react_I/cdc-admin",
 		"/C/alura/react_I/cdc-admin/public",
 		"/C/alura/react_I/cdc-admin/src",
-		"/C/alura/react_I/js",
-		"/C/alura/react_I/js/app",
-		"/C/alura/react_I/js/app/services"
+		"/C/alura/react_I/js"
 	],
 	"file_history":
 	[
+		"/C/alura/js_avancado_III/aluraframe/client/js/app-es6/controllers/NegociacaoController.js",
 		"/C/alura/react_I/js/app/services/HttpService.js",
 		"/C/alura/js_avancado_III/aluraframe/client/js/app-es6/services/NegociacaoService.js",
 		"//192.168.1.160/e$/WWWSITE/api/gerador-etiquetas/index.php",
@@ -322,7 +368,6 @@
 		"/C/alura/react_I/cdc-admin/src/App.js",
 		"/C/alura/react_I/cdc-admin/public/index.html",
 		"/C/alura/js_avancado_III/aluraframe/client/index.html",
-		"/C/alura/js_avancado_III/aluraframe/client/js/app-es6/controllers/NegociacaoController.js",
 		"/C/alura/js_avancado_III/aluraframe/client/js/app-es6/views/NegociacoesView.js",
 		"/C/alura/js_avancado_III/aluraframe/client/js/app-es6/boot.js",
 		"/C/wamp64/www/simulador_calc_rra/js/app/controllers/SimulacaoController.js",
@@ -414,7 +459,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -428,6 +473,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"service",
 			"class",
 			"bind",
 			"forEach",
@@ -454,7 +500,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -463,30 +509,31 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4012,
+						"buffer_size": 4177,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								288,
-								288
+								331,
+								331
 							]
 						],
 						"settings":
 						{
 							"SL.13.region_keys":
 							[
-								"SL.jshint.Highlights.|8c234f39b9934fb6a448df934adfb8d4d7642597610572bcb097d367a29e9693|source.js meta.function-call.method.js support.function.dom.js|1316",
-								"sublime_linter.protected_regions",
 								"SL.jshint.Highlights.|c330596b508ef7ad6823e1bf7fd15648c573c9d434a85a5221c8c2eb6ce72be4|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8c234f39b9934fb6a448df934adfb8d4d7642597610572bcb097d367a29e9693|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|c5ff10ea04827a0e355dd67e0a2072de4ac83af353467d54c24044dccbef6028|source.js meta.function-call.method.js support.function.dom.js|1316",
 								"SL.jshint.Highlights.|be80b6a7e455dfdd46c0183f38e9b5171d4594fd786f3f3649e3bdc3e7cf743d|source.js meta.function-call.method.js support.function.dom.js|1316",
-								"SL.jshint.Highlights.|8ca11c5dc9ca77bf0f6ee47a57d2848793c1fd4d3443ef71a583aa95bf674afa|source.js meta.block.js keyword.operator.assignment.js|1316",
-								"SL.jshint.Gutter.|source.js meta.function-call.method.js support.function.dom.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png",
-								"SL.jshint.Highlights.|4a83784625b040090d4d7c9e36c79b495b2828ce3102f5643df33ae8a13d83dc|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|573d173b6aa1db6a27ee35360c26f80e131ca85cb1a1d9c6c5a847c9637979ac|source.js meta.block.js keyword.operator.assignment.js|1316",
 								"SL.jshint.Highlights.|715302d5e3f1cbc603c6c598fcf3a6d9e14ad716d80db68c2aae2cea0e549dac|source.js meta.function-call.method.js support.function.dom.js|1316",
-								"SL.jshint.Gutter.|source.js meta.block.js keyword.operator.assignment.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png"
+								"SL.jshint.Highlights.|4a83784625b040090d4d7c9e36c79b495b2828ce3102f5643df33ae8a13d83dc|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"sublime_linter.protected_regions",
+								"SL.jshint.Gutter.|source.js meta.block.js keyword.operator.assignment.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png",
+								"SL.jshint.Gutter.|source.js meta.function-call.method.js support.function.dom.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png"
 							],
 							"SL.30.region_keys":
 							[
@@ -500,8 +547,128 @@
 								"SL.jshint.Highlights.|715302d5e3f1cbc603c6c598fcf3a6d9e14ad716d80db68c2aae2cea0e549dac|source.js meta.function-call.method.js support.function.dom.js|1316"
 							],
 							"auto_complete": false,
-							"syntax": "Packages/Simple JSX/JSX.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "cdc-admin/src/services/AutorService.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								374,
+								374
+							]
+						],
+						"settings":
+						{
+							"SL.19.region_keys":
+							[
+								"SL.jshint.Highlights.|ae7a1f546641015aaae1756fec36b73b3bbece957faf5e752f222385835fcd6e|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|9db20b3c473c20fd888f857c71787cd78586b04337250ba04cd2fa9038c2e301|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|be80b6a7e455dfdd46c0183f38e9b5171d4594fd786f3f3649e3bdc3e7cf743d|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"sublime_linter.protected_regions",
+								"SL.jshint.Highlights.|6aaa226425e0a045fe3bb41fd5b1f2c2201dfe925744c0a1c8c99ec304513027|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|d564d1b732bd18040df978c1f3a30dd27e5ec228f62dd9f2101b34bfa053f463|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|217a8598f53abbd3201f7687ea7d34721a176065ed163b04ec0a3a53df2829c8|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Gutter.|source.js meta.function-call.method.js support.function.dom.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png"
+							],
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "cdc-admin/src/services/LivroService.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 572,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								371,
+								371
+							]
+						],
+						"settings":
+						{
+							"SL.22.region_keys":
+							[
+								"SL.jshint.Highlights.|ae7a1f546641015aaae1756fec36b73b3bbece957faf5e752f222385835fcd6e|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|9db20b3c473c20fd888f857c71787cd78586b04337250ba04cd2fa9038c2e301|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|6aaa226425e0a045fe3bb41fd5b1f2c2201dfe925744c0a1c8c99ec304513027|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|be80b6a7e455dfdd46c0183f38e9b5171d4594fd786f3f3649e3bdc3e7cf743d|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"sublime_linter.protected_regions",
+								"SL.jshint.Highlights.|aeafd8a79dd1ffa0c40b894b784342fa15664523663c0040834aee1e6c676b29|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|d564d1b732bd18040df978c1f3a30dd27e5ec228f62dd9f2101b34bfa053f463|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Gutter.|source.js meta.function-call.method.js support.function.dom.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png"
+							],
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "cdc-admin/public/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 507,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								446,
+								446
+							]
+						],
+						"settings":
+						{
+							"SL.23.region_keys":
+							[
+							],
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -512,7 +679,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 4,
 					"file": "cdc-admin/src/HttpService.js",
 					"semi_transient": false,
 					"settings":
@@ -524,12 +691,22 @@
 						"selection":
 						[
 							[
-								261,
-								261
+								529,
+								529
 							]
 						],
 						"settings":
 						{
+							"SL.14.region_keys":
+							[
+								"SL.jshint.Highlights.|d4636404fd19a53744d948c3cee8552213b34e67ee9d290152ae03487b36878c|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|62ce14712db34b7ce876c27f63f4e07910ff9c917b50ee0197443b603e858773|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"sublime_linter.protected_regions",
+								"SL.jshint.Highlights.|10b85c28cf2b43357f45d17c246a5b48e5c7479af317970e9945da5754b03d6e|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|b75d45f97a6650aaf5416ce9badfb60a9c5750f06885f9611c11df7363d32479|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Gutter.|source.js meta.function-call.method.js support.function.dom.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png",
+								"SL.jshint.Highlights.|276d25499e7701df595fcddb8c1787d8f3d0a6bed1b9a1fae007283c14dad2e5|source.js meta.function-call.method.js support.function.dom.js|1316"
+							],
 							"SL.19.region_keys":
 							[
 								"SL.jshint.Highlights.|276d25499e7701df595fcddb8c1787d8f3d0a6bed1b9a1fae007283c14dad2e5|source.js meta.function-call.method.js support.function.dom.js|1316",
@@ -548,7 +725,143 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/alura/js_avancado_III/aluraframe/client/js/app-es6/services/NegociacaoService.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								542,
+								542
+							]
+						],
+						"settings":
+						{
+							"SL.17.region_keys":
+							[
+								"SL.jshint.Highlights.|ef7d676865f28e7c6b5f47a549ab922708df88e814749a82e5690d3358d9fe72|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|43f0c146c52f9637d0f89321f26be3d275150b7d51f50b82ea00185a35d37665|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|fef512612d0d8bdec9cc6ab5e1e658c4b21d5804dbaf8588b3878269140420c3|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|6c82dec69ebcf8e585d80f5a288a17b4a5b28618d7b7616bda9e6a1e16d4dda3|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|28ba6473213c657149463342ee34b89db9ece034b3b83c4c0b25c6bc61aac4ec|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|49c75697278c5f37e88bbbf27ba9ed13fe9dc5cc7f8f1b6672a8fa15c9156d5a|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|f6d27ca9bcbc58172327974092d67aaec863fc800df7cc21cf6a260fa0e8703c|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|902e9732511cb808e7151152c6b320bedddf1dd34c1502056d779e511d5107e3|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8b3383be601b17770d62c6a509ca2adf49521a126c8280146ee122b2d3be3c64|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"sublime_linter.protected_regions",
+								"SL.jshint.Highlights.|5d87bc9f5a357bffc13b04425f3eff385944f6599721f5a15e4b758cad4d3357|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|046c0e2f06981ef84a749bcb8640c0672f174b0790c01c7447e16c509401cd44|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|7d88acdcf86f2051384faa6c94e5196555dae75d563bcf8bd8c70005d0f95743|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Gutter.|source.js meta.function-call.method.js support.function.dom.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png",
+								"SL.jshint.Highlights.|1053e69ad77e3bb4b689003a2e559b57b3a4e795719b6f08552cc80dc0e25115|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|028d2355d065aa9518c19a619b5becef0f2d12618ceb48a45372a03581a405ee|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8e9e9cc6ec2ea60ab7b1bb8115c4f6e9fe52c8645fbef2dd509a9ae6f06658e6|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|0f4547dca76ea9ec7ab1edf4e911659652c6905368f43787e52f9503240b199e|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|3a9718d0ed5c2ae8556be567f811875e674a0010be937357ad75313c2912d40f|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|5ceebe3c8d9506609a77dd957353245cfc2b9150d3b39a56b9ddc61c95757237|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|7a2c370b9760c4f835e63f48300c4ce795d1a8450c4e4443a643eb61f3cbcb9b|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|25bdcb00c39aad470518a5fc4d21edda0a079da8b8862adc0859dc54210715ba|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|c330596b508ef7ad6823e1bf7fd15648c573c9d434a85a5221c8c2eb6ce72be4|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|3d78d965ce85111058f7663b948a52dd50e1caffc4d9fb870ea0d855b488d8da|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|be80b6a7e455dfdd46c0183f38e9b5171d4594fd786f3f3649e3bdc3e7cf743d|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8087b5a7e1ff9bb412c1c4487916e3c58136765dbb6b8e8bf10f8d532477ae29|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|715302d5e3f1cbc603c6c598fcf3a6d9e14ad716d80db68c2aae2cea0e549dac|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8d92454ca29573846d7bd9eaeeed1bccd1584eb3a106e38720a4db4ae6b367fc|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|7db60a8bcdcb8a15ee1c157d9aa943c68baf157cf95e0c0c4a45398267824617|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|9e98248e13654c7bcf3e8cc34b36232f93f0649db22e4e44d737df966f4e6d01|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|bb7fea93d619b2ee85373103eba887589b2ac75234cebcbdceef4547387df022|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|6d60d82be929c35244f19e5eea641ae6d5743fe7289e745e25794f092f9f904a|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|1c7530b9a0796330e76663e5d0b0fa88ed6d88782fd845b52ee546e96225293c|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8c234f39b9934fb6a448df934adfb8d4d7642597610572bcb097d367a29e9693|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|31ce0bb69268e19ac62f14f3a94963c0d5e231722a0e32e628c089d1bad5390c|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|4c2b81e4a7c7c7d206eae0bffc2508790d7f8e018cb45e4b0977014fe3211b4d|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|55d10c356ebb14260f61073bf1023150039f380a41a3fd13a1ade207eb47c4c8|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|76608e8b91bab8c5ce19b04d6db3a326be799206db65496ececa45b81a51f2d4|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|3f62fe799cee1d3e4b35d3df98cac63fb1ea66b7c30d6ff5c2bced0c2d985872|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|408e4a4f25469599affffbd9b01d2c817af9c5e00f7ebde7a8af6eb3109017fe|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|b36ebb7341696ab2972957f74e6bc21825a79b301921b945bd378b7d29b2fe3a|source.js meta.function-call.method.js support.function.dom.js|1316"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 918.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/alura/js_avancado_III/aluraframe/client/js/app-es6/controllers/NegociacaoController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1117,
+								1124
+							]
+						],
+						"settings":
+						{
+							"SL.21.region_keys":
+							[
+								"SL.jshint.Highlights.|c330596b508ef7ad6823e1bf7fd15648c573c9d434a85a5221c8c2eb6ce72be4|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|6184ed601d97afc216c195c0c8177cf15c5fdab655b4c060484ec8f482446a78|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|be80b6a7e455dfdd46c0183f38e9b5171d4594fd786f3f3649e3bdc3e7cf743d|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|715302d5e3f1cbc603c6c598fcf3a6d9e14ad716d80db68c2aae2cea0e549dac|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|a1d8936ce0eca2efc9663bec1b7c09305ed3627fc0e703140d429a6c2a1cce34|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|5e215758cb7f38c6175e91399f211875e83087ebbe658e94b1837d78a97efd3e|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|752f5de0aeab6a7a1add4b4f91cbaa894ae89fbeb20186cb0700a8e3d56b14bb|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"sublime_linter.protected_regions",
+								"SL.jshint.Highlights.|53c65ce0c7c9b36216318d37a08c9d7551c36dc6d9ce0d0bc6cf835b5a9f2a83|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|765a95066fcdeddab00021bfa13e4a4bb2271c887f0fac18d990b62a3aef4cb7|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|a2430ecaa0ce7167eb88db16b2dedda51b5de60536c0b3d55af45c595a1afdb8|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|90f953a5c2091615a280353507cf5b9a6f472f718b50d08616631ef5448b0f69|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|aa5c324dce0d1dbddb2650e9233cc060dba1e692cda9be6d9b9d49a48f1596b4|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|3d1657c7756775eaae1f4ed8ff61bc00ab191abbfb441269454e8cf2be727f58|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8c234f39b9934fb6a448df934adfb8d4d7642597610572bcb097d367a29e9693|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8cd5a5c248613774ba8add90a567ddd3a8e68323cb8cdb25857f97fb02c6b8ad|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|fba970f3aecbca1b80dff83cff2c6b640d6f252a89f87f3638fd2392d49c32eb|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|dfab578b672a42c6a8dac85fe8970fd7ed1a2110eafe582fd7ccf8052d801a89|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Gutter.|source.js meta.function-call.method.js support.function.dom.js|Packages/SublimeLinter/gutter-themes/Default/pointer.png",
+								"SL.jshint.Highlights.|21897035f0215e0f0aa88cb2149b0ee538687dd6b7cef4055b6815587ddb2b3d|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|1575a2022dc900d23ccea286ce7c91a5143e3f294e7dee05fab149f9a42b0574|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|85aa5d9b0fbca2291f831288b52340a016f41c897a33f443a3254ce11aef1a12|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|86ee9e63fedbe1f63b1378bcacc4fbdd218a7ed70f7a1bef16378696abea1e35|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|5590c1c21af810d6ff8a2f95bc5ac5cdc6b9ee96235dd6d3ef40636c934703b3|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|8421236387ac862fd560943b4615babc1df5592bd1496e09dc0169dcf4dc0f97|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|bd995103295621cf7b1cf898617d76fba9b5bcfcd866c5342b152960db4eba83|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|1ab0a4a37db7f9006bf6c932f5d9176af784f60cf15422217493cdb2051097ad|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|6fc843807d8dca9008268e5da34856b90ffa3d16bb85111212443e4f863f59ff|source.js meta.function-call.method.js support.function.dom.js|1316",
+								"SL.jshint.Highlights.|f83f5db93708416c363676f5d55e08003a75356ed079da7a98a5e1e710c4a156|source.js meta.function-call.method.js support.function.dom.js|1316"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

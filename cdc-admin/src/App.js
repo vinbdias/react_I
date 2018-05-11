@@ -12,11 +12,11 @@ class App extends Component {
         this._service = new AutorService();    
     }
 
-    componentWillMount() {
+    componentDidMount() {
 
         this._service
             .obterAutores()
-            .then(autores => this.setState({lista: autores.slice(1, 15)}));  
+            .then(autores => this.setState({lista: autores}));  
     }
 
     render() {
