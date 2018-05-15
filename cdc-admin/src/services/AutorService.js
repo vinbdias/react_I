@@ -1,18 +1,19 @@
 import {HttpService} from './HttpService';
 
-export class AutorService {
+export class AutorService extends HttpService {
 
-    constructor() {
+    _handleErrors(res) {
 
-        this._http = new HttpService();
-    }
+        if(![200, 400].includes(res.status)) throw new Error(res.statusText); //Erros de bad request (400) serão tratados na camada acima
+
+        return res;
+    }    
 
     obterAutores() {
 
        return new Promise((resolve, reject) => {
 
-            this._http
-                .get('http://localhost:8080/api/autores')
+            this.get('http://localhost:8080/api/autores')
                 .then(autores => resolve(autores))
                 .catch(erro => {
                     console.log(erro);
@@ -25,8 +26,7 @@ export class AutorService {
 
        return new Promise((resolve, reject) => {
 
-            this._http
-                .post('http://localhost:8080/api/autores', autor)
+            this.post('http://localhost:8080/api/autores', autor)
                 .then(autores => resolve(autores))
                 .catch(erro => {
                     console.log(erro);

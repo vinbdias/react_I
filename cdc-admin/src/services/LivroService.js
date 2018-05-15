@@ -1,18 +1,12 @@
 import {HttpService} from './HttpService';
 
-export class LivroService {
-    
-    constructor() {
+export class LivroService extends HttpService {
         
-        this._http = new HttpService();
-    }
-    
     obterLivros() {
        
        return new Promise((resolve, reject) => {
         
-            this._http
-                .get('http://localhost:8080/api/livros')                
+            this.get('http://localhost:8080/api/livros')                
                 .then(livros => resolve(livros))
                 .catch(erro => {
                     console.log(erro);

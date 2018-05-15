@@ -2,8 +2,12 @@ import React, {Component} from 'react';
 import {AutorService}  from './services/AutorService';
 import {InputCustomizado} from './componentes/InputCustomizado';
 import {BotaoSubmitCustomizado} from './componentes/BotaoSubmitCustomizado';
+import PubSub from 'pubsub-js';
+import TratadorDeErros from './TratadorDeErros';
+import './css/pure-min.css';
+import './css/side-menu.css';
 
-export class FormularioAutor extends Component {
+class FormularioAutor extends Component {
 
     constructor() {
 
@@ -20,12 +24,31 @@ export class FormularioAutor extends Component {
 
         evento.preventDefault();
 
-        this._autorService.cadastrar({
+        PubSub.publish('limpa-erros', {});
+
+        this._autorService
+        .cadastrar({
 
             nome: this.state.nome,
             email: this.state.email,
             senha: this.state.senha
-        }).then(resposta => this.setState({lista: resposta}));
+        })
+        .then((resposta) => {
+
+            if(resposta.status == 400) {
+                
+                if (typeof resposta.errors !== 'undefined')
+                    new TratadorDeErros().publicarErros(resposta.errors);                
+                else
+                    console.log(resposta);
+            }
+            else { 
+
+                PubSub.publish('atualiza-lista-autores', resposta);         
+                this.setState({nome: '', email: '', senha: ''});   
+            }            
+        })
+        .catch(erro => console.log(erro));
     }
 
     setNome(evento) {
@@ -48,9 +71,9 @@ export class FormularioAutor extends Component {
         return(
             <div className="pure-form pure-form-aligned">
                 <form className="pure-form pure-form-aligned" onSubmit={this.enviarForm} method="post">
-                    <InputCustomizado id="nome" name="nome" value={this.state.nome} onChange={this.setNome} label="Nome" />
-                    <InputCustomizado id="email" name="email" value={this.state.email} onChange={this.setEmail} label="Email" />
-                    <InputCustomizado id="senha" name="senha" value={this.state.senha} onChange={this.setSenha} label="Senha" />
+                    <InputCustomizado id="nome" name="nome" type="text" value={this.state.nome} onChange={this.setNome} label="Nome" />
+                    <InputCustomizado id="email" name="email" type="email" value={this.state.email} onChange={this.setEmail} label="Email" />
+                    <InputCustomizado id="senha" name="senha" type="password" value={this.state.senha} onChange={this.setSenha} label="Senha" />
                     <BotaoSubmitCustomizado label="Gravar" />
                 </form>
             </div>
@@ -58,20 +81,12 @@ export class FormularioAutor extends Component {
     }
 }
 
-export class TabelaAutores extends Component {
+class TabelaAutores extends Component {
 
     constructor() {
 
-        super();
-        this.state = {lista: []};
+        super();        
         this._autorService = new AutorService();
-    }
-
-    componentDidMount() {
-
-        this._autorService
-            .obterAutores()
-            .then(autores => this.setState({lista: autores}));
     }
 
     render() {
@@ -87,7 +102,7 @@ export class TabelaAutores extends Component {
                     </thead>
                     <tbody>
                         {
-                            this.state.lista.map(function(autor) {
+                            this.props.lista.map(function(autor) {
 
                                 return (
                                     <tr key={autor.id}>
@@ -99,6 +114,35 @@ export class TabelaAutores extends Component {
                         }
                     </tbody>
                 </table>
+            </div>
+            );
+    }
+}
+
+export default class AutorBox extends Component {
+
+    constructor() {
+
+        super();
+        this.state = {lista: []};     
+        this._autorService = new AutorService();           
+    }
+
+    componentDidMount() {
+
+        this._autorService
+            .obterAutores()
+            .then(autores => this.setState({lista: autores}));
+
+        PubSub.subscribe('atualiza-lista-autores', (topico, novaLista) => this.setState({lista: novaLista}));
+    }    
+
+    render() {
+
+        return(
+            <div>
+                <FormularioAutor />
+                <TabelaAutores lista={this.state.lista} />
             </div>
             );
     }
