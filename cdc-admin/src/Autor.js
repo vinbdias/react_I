@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AppComponente from './AppComponente';
 import {AutorService}  from './services/AutorService';
 import {InputCustomizado} from './componentes/InputCustomizado';
 import {BotaoSubmitCustomizado} from './componentes/BotaoSubmitCustomizado';
@@ -7,7 +8,7 @@ import TratadorDeErros from './TratadorDeErros';
 import './css/pure-min.css';
 import './css/side-menu.css';
 
-class FormularioAutor extends Component {
+class FormularioAutor extends AppComponente {
 
     constructor() {
 
@@ -15,9 +16,6 @@ class FormularioAutor extends Component {
         this.state = {nome: '', email: '', senha: ''};
         this._autorService = new AutorService();
         this.enviarForm = this.enviarForm.bind(this);
-        this.setNome = this.setNome.bind(this);
-        this.setEmail = this.setEmail.bind(this);
-        this.setSenha = this.setSenha.bind(this);
     }
 
     enviarForm(evento) {
@@ -36,34 +34,19 @@ class FormularioAutor extends Component {
         .then((resposta) => {
 
             if(resposta.status == 400) {
-                
+
                 if (typeof resposta.errors !== 'undefined')
-                    new TratadorDeErros().publicarErros(resposta.errors);                
+                    new TratadorDeErros().publicarErros(resposta.errors);
                 else
                     console.log(resposta);
             }
-            else { 
+            else {
 
-                PubSub.publish('atualiza-lista-autores', resposta);         
-                this.setState({nome: '', email: '', senha: ''});   
-            }            
+                PubSub.publish('atualiza-lista-autores', resposta);
+                this.setState({nome: '', email: '', senha: ''});
+            }
         })
         .catch(erro => console.log(erro));
-    }
-
-    setNome(evento) {
-
-        this.setState({nome: evento.target.value});
-    }
-
-    setEmail(evento) {
-
-        this.setState({email: evento.target.value});
-    }
-
-    setSenha(evento) {
-
-        this.setState({senha: evento.target.value});
     }
 
     render() {
@@ -71,9 +54,9 @@ class FormularioAutor extends Component {
         return(
             <div className="pure-form pure-form-aligned">
                 <form className="pure-form pure-form-aligned" onSubmit={this.enviarForm} method="post">
-                    <InputCustomizado id="nome" name="nome" type="text" value={this.state.nome} onChange={this.setNome} label="Nome" />
-                    <InputCustomizado id="email" name="email" type="email" value={this.state.email} onChange={this.setEmail} label="Email" />
-                    <InputCustomizado id="senha" name="senha" type="password" value={this.state.senha} onChange={this.setSenha} label="Senha" />
+                    <InputCustomizado id="nome" name="nome" type="text" value={this.state.nome} onChange={this.salvaAlteracao.bind(this, 'nome')} label="Nome" />
+                    <InputCustomizado id="email" name="email" type="email" value={this.state.email} onChange={this.salvaAlteracao.bind(this, 'email')} label="Email" />
+                    <InputCustomizado id="senha" name="senha" type="password" value={this.state.senha} onChange={this.salvaAlteracao.bind(this, 'senha')} label="Senha" />
                     <BotaoSubmitCustomizado label="Gravar" />
                 </form>
             </div>
@@ -81,11 +64,11 @@ class FormularioAutor extends Component {
     }
 }
 
-class TabelaAutores extends Component {
+class TabelaAutores extends AppComponente {
 
     constructor() {
 
-        super();        
+        super();
         this._autorService = new AutorService();
     }
 
@@ -119,30 +102,40 @@ class TabelaAutores extends Component {
     }
 }
 
-export default class AutorBox extends Component {
+export default class AutorBox extends AppComponente {
 
     constructor() {
 
         super();
-        this.state = {lista: []};     
-        this._autorService = new AutorService();           
+        this.state = {lista: []};
+        this._autorService = new AutorService();
     }
 
     componentDidMount() {
 
         this._autorService
             .obterAutores()
-            .then(autores => this.setState({lista: autores}));
+            .then(autores => {
 
-        PubSub.subscribe('atualiza-lista-autores', (topico, novaLista) => this.setState({lista: novaLista}));
-    }    
+                autores.sort();
+                this.setState({lista: autores})
+            });
+
+        PubSub.subscribe('atualiza-lista-autores', (topico, novaLista) =>
+         this.setState({lista: novaLista}));
+    }
 
     render() {
 
         return(
             <div>
-                <FormularioAutor />
-                <TabelaAutores lista={this.state.lista} />
+                <div className="header">
+                    <h1>Cadastro de Autores</h1>
+                </div>
+                <div className="content" id="content">
+                    <FormularioAutor />
+                    <TabelaAutores lista={this.state.lista} />
+                </div>
             </div>
             );
     }

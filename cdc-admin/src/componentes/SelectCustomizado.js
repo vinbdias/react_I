@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 
-export class InputCustomizado extends Component {
+export class SelectCustomizado extends Component {
 
     constructor() {
 
@@ -14,7 +14,17 @@ export class InputCustomizado extends Component {
         return (
             <div className="pure-control-group">
                 <label htmlFor={this.props.id}>{this.props.label}</label>
-                <input {...this.props} />
+                <select {...this.props}>
+                    <option value=""> Selecione autor </option>
+                {
+                    this.props.opcoes.map(function(opcao) {
+
+                        return (
+                            <option key={opcao.valor} value={opcao.valor}>{opcao.label}</option>
+                        );
+                    })
+                }
+                </select>
                 <span className="erro">{this.state.msgErro}</span>
             </div>
             );
