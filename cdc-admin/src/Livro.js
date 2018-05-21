@@ -32,8 +32,6 @@ class FormularioLivro extends AppComponente {
 
         PubSub.publish('limpa-erros', {});
 
-        console.log(this);
-
         this._livroService
         .cadastrar({
 
@@ -47,8 +45,6 @@ class FormularioLivro extends AppComponente {
 
                 if (typeof resposta.errors !== 'undefined')
                     new TratadorDeErros().publicarErros(resposta.errors);
-                else
-                    console.log(resposta);
             }
             else {
 
@@ -56,7 +52,7 @@ class FormularioLivro extends AppComponente {
                 this.setState({titulo: '', preco: '', autorId: ''});
             }
         })
-        .catch(erro => console.log(erro));
+        .catch(erro => {throw new Error(erro)});
     }
 
     render() {

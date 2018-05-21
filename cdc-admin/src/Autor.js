@@ -37,8 +37,6 @@ class FormularioAutor extends AppComponente {
 
                 if (typeof resposta.errors !== 'undefined')
                     new TratadorDeErros().publicarErros(resposta.errors);
-                else
-                    console.log(resposta);
             }
             else {
 
@@ -46,7 +44,7 @@ class FormularioAutor extends AppComponente {
                 this.setState({nome: '', email: '', senha: ''});
             }
         })
-        .catch(erro => console.log(erro));
+        .catch(erro => {throw new Error(erro)});
     }
 
     render() {
