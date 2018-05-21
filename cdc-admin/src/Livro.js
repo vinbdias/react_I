@@ -3,6 +3,7 @@ import AppComponente from './AppComponente';
 import {LivroService}  from './services/LivroService';
 import {AutorService}  from './services/AutorService';
 import {InputCustomizado} from './componentes/InputCustomizado';
+import {InputValorMoedaCustomizado} from './componentes/InputValorMoedaCustomizado';
 import {SelectCustomizado} from './componentes/SelectCustomizado';
 import {BotaoSubmitCustomizado} from './componentes/BotaoSubmitCustomizado';
 import PubSub from 'pubsub-js';
@@ -20,17 +21,24 @@ class FormularioLivro extends AppComponente {
         this._autorService = new AutorService();
     }
 
+    _parseInputValorMoedaCustomizado(valor) {
+
+        return valor.replace('R$ ', '').replace('.', '').replace(',', '.');
+    }
+
     enviarForm(evento) {
 
         evento.preventDefault();
 
         PubSub.publish('limpa-erros', {});
 
+        console.log(this);
+
         this._livroService
         .cadastrar({
 
             titulo: this.state.titulo,
-            preco: this.state.preco,
+            preco: this._parseInputValorMoedaCustomizado(this.state.preco),
             autorId: this.state.autorId
         })
         .then((resposta) => {
@@ -55,9 +63,9 @@ class FormularioLivro extends AppComponente {
 
         return(
             <div className="pure-form pure-form-aligned">
-                <form className="pure-form pure-form-aligned" onSubmit={this.enviarForm} method="post">
+                <form className="pure-form pure-form-aligned" onSubmit={this.enviarForm.bind(this)} method="post">
                     <InputCustomizado id="titulo" name="titulo" type="text" value={this.state.titulo} onChange={this.salvaAlteracao.bind(this, 'titulo')} label="Título" />
-                    <InputCustomizado id="preco" name="preco" type="number" min="1" step="any" value={this.state.preco} onChange={this.salvaAlteracao.bind(this, 'preco')} label="Preço" />
+                    <InputValorMoedaCustomizado id="preco" name="preco" type="text" min="1" step="any" thousandSeparator={'.'} decimalSeparator={','} decimalScale={2} prefix={'R$ '} placeholder="R$ 0,00" value={this.state.preco} onChange={this.salvaAlteracao.bind(this, 'preco')} label="Preço" />
                     <SelectCustomizado id="autorId" name="autorId" value={this.state.autorId} opcoes={this.state.opcoesAutores} onChange={this.salvaAlteracao.bind(this, 'autorId')} label="Autor" />
                     <BotaoSubmitCustomizado label="Gravar" />
                 </form>
